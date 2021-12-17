@@ -1,8 +1,5 @@
-require 'sinatra'
-require 'sinatra/reloader'
-also_reload 'lib/**/*.rb'
-require 'pry'
-
-get '/' do
-  "Hello world!"
-end
+require('sinatra')
+require('sinatra/reloader')
+require('./lib/word')
+require('pry')
+also_reload('lib/**/*.rb')
