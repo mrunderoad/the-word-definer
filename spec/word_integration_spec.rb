@@ -69,19 +69,14 @@ end
 
 describe('creates and updates word', {:type => :feature}) do
   it('creates a new word and then updates the name') do
-    visit("/words")
-    click_on('Add a new word!')
-    visit("/word")
-    fill_in('word_name', :with => 'Bacon')
-    click_on('Add Word!')
-    visit("/words")
-    click_on('Bacon')
+    word = Word.new('Bacon', nil)
+    word.save
     visit("/words/#{word.id}")
     click_on('Edit Word')
     visit("/words/#{word.id}/edit")
     fill_in('update_name', :with => 'Ham')
     click_on('Update')
-    visit("/words/word/#{word.id}")
+    visit("/words")
     expect(page).to have_content('Ham')
   end
 end
