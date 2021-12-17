@@ -52,11 +52,11 @@ class Word
   end
 
   def self.sort
-    # array = @@albums.values.sort_by! &:name
-    # @@albums = {}
-    # array.each do |element|
-    #   @@albums[element.id] = element
-    #end
+    array = @@words.values.sort_by! &:name
+    @@words = {}
+    array.each do |word|
+      @@words[word.id] = word
+    end
   end
 
 end
