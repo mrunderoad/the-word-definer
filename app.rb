@@ -63,11 +63,11 @@ get('/words/:id/definitions/:definition_id') do
   erb(:definition)
 end
 
-post('/words/:id/defnitions/sort') do
-  Definition.sort
-  @definition = Definition.all
-  erb(:definition)
-end
+# post('/words/:id/defnitions/sort') do
+#   Definition.sort
+#   @definition = Definition.all
+#   erb(:definition)
+# end
 
 post('/words/:id/definitions') do
   @word = Word.find(params[:id].to_i())

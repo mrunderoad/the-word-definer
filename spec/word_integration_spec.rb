@@ -44,3 +44,39 @@ describe('deletes a word', {:type => :feature}) do
     expect(page).to have_content("")
   end
 end
+
+# describe('deletes a definition', {:type => :feature}) do
+#   it('creates a word and definition and then deletes the definition') do
+#     word = Word.new('cool', nil)
+#     word.save
+#     definition = Definition.new('definition', nil, nil)
+#     definition.save
+#     visit("/words/#{word.id}/definitions/#{definition.id}")
+#     click_on('Delete Definition')
+#     expect(page).to have_content("")
+#   end 
+# end
+
+# describe('sorts words', {:type => :feature}) do
+#   it('sorts words alphabetically') do
+#     word = Word.new("Dark", nil)
+#     word.save
+#     word2 = Word.new("Ace", nil)
+#     word2.save
+#     visit("/")
+#     click_on('Sort Words Alphabetically')
+#     expect(page).to have_content("Ace", "Dark")
+#   end
+# end
+
+describe('updates word', {:type => :feature}) do
+  it('updates the name of a word') do
+    word = Word.new("That", nil)
+    word.save
+    visit("/words/#{word.id}/edit")
+    fill_in('name', :with => 'This')
+    click_on('Update')
+    expect("/words").to have_content('This')
+  end
+end
+
