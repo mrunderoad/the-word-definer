@@ -46,7 +46,7 @@ end
 
 patch('/words/:id') do
   @word = Word.find(params[:id].to_i())
-  @word.update(params[:name])
+  @word.update(params[:update_name], params[:id])
   @words = Word.all
   erb(:words)
 end
@@ -63,12 +63,6 @@ get('/words/:id/definitions/:definition_id') do
   erb(:definition)
 end
 
-# post('/words/:id/defnitions/sort') do
-#   Definition.sort
-#   @definition = Definition.all
-#   erb(:definition)
-# end
-
 post('/words/:id/definitions') do
   @word = Word.find(params[:id].to_i())
   definition = Definition.new(params[:definition_name], @word.id, nil)
@@ -79,7 +73,7 @@ end
 patch('/words/:id/definitions/:definition_id') do
   @word = Word.find(params[:id].to_i())
   definition = Definition.find(params[:definition_id].to_i())
-  definition.update(params[:name], @album.id)
+  definition.update(params[:name], @word.id, params[:id])
   erb(:word)
 end
 

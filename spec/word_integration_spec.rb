@@ -45,6 +45,16 @@ describe('deletes a word', {:type => :feature}) do
   end
 end
 
+describe('Capitalizes word', {:type => :feature}) do
+  it('capitalizes inputted word') do
+    visit("/words")
+    click_on('Add a new word!')
+    fill_in('word_name', :with => 'banana')
+    click_on('Add Word!')
+    expect(page).to have_content('Banana')
+  end
+end
+
 # describe('deletes a definition', {:type => :feature}) do
 #   it('creates a word and definition and then deletes the definition') do
 #     word = Word.new('cool', nil)
@@ -57,26 +67,22 @@ end
 #   end 
 # end
 
-# describe('sorts words', {:type => :feature}) do
-#   it('sorts words alphabetically') do
-#     word = Word.new("Dark", nil)
-#     word.save
-#     word2 = Word.new("Ace", nil)
-#     word2.save
-#     visit("/")
-#     click_on('Sort Words Alphabetically')
-#     expect(page).to have_content("Ace", "Dark")
-#   end
-# end
-
-describe('updates word', {:type => :feature}) do
-  it('updates the name of a word') do
-    word = Word.new("That", nil)
-    word.save
+describe('creates and updates word', {:type => :feature}) do
+  it('creates a new word and then updates the name') do
+    visit("/words")
+    click_on('Add a new word!')
+    visit("/word")
+    fill_in('word_name', :with => 'Bacon')
+    click_on('Add Word!')
+    visit("/words")
+    click_on('Bacon')
+    visit("/words/#{word.id}")
+    click_on('Edit Word')
     visit("/words/#{word.id}/edit")
-    fill_in('name', :with => 'This')
+    fill_in('update_name', :with => 'Ham')
     click_on('Update')
-    expect("/words").to have_content('This')
+    visit("/words/word/#{word.id}")
+    expect(page).to have_content('Ham')
   end
 end
 
