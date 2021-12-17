@@ -35,4 +35,8 @@ class Definition
     @@definitions.delete(self.id)
   end
 
+  def update(name, word_id, id)
+
+  end
+
 end

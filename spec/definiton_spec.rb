@@ -68,5 +68,15 @@ describe '#Definition' do
     end
   end
 
+  describe('#update') do
+    it("updates a definition by id") do
+      definition = Definition.new("fair", @word.id, nil)
+      definition.save
+      definition.update("Sweet", @word.id, nil)
+      expect(definition.name).to(eq("Sweet"))
+    end
+  end
+
+
 
 end
