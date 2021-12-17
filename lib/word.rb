@@ -31,4 +31,8 @@ class Word
     self.name.eql?(other_word.name)
   end
 
+  def update(name, id)
+
+  end
+
 end

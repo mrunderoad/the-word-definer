@@ -50,6 +50,14 @@ require 'word'
       expect(Word.find(word.id)).to(eq(word))
     end
   end
-  
+
+  describe('#update') do
+    it('updates a word by id') do
+      word = Word.new("Cool", nil)
+      word.save
+      word.update("Bad", '')
+      expect(word.name).to(eq("Bad"))
+    end 
+  end
 
 end
