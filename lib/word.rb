@@ -10,6 +10,11 @@ class Word
     @searched = true
   end
 
+  def self.clear
+    @@words = {}
+    @@total_rows = 0
+  end
+
   def self.all
     @@words.values()
   end
@@ -20,6 +25,10 @@ class Word
 
   def save
     @@words[self.id] = Word.new(self.name, self.id)
+  end
+
+  def ==(other_word)
+    self.name.eql?(other_word.name)
   end
 
 end

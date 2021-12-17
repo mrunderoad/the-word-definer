@@ -6,7 +6,7 @@ require 'word'
     before(:each) do
     Word.clear
     end
-  end    
+     
   
   describe('.all') do
     it("returns an empty array when there are no words.") do
@@ -21,3 +21,13 @@ require 'word'
       expect(Word.all).to(eq([word]))
     end
   end
+
+  describe('#==') do
+    it("is the same word if it has the same attributes as another") do
+      word = Word.new("Crazy", nil)
+      word2 = Word.new("Crazy", nil)
+      expect(word).to(eq(word2))
+    end
+  end
+
+end
