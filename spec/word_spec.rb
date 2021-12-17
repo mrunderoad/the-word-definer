@@ -71,5 +71,13 @@ require 'word'
     end 
   end 
 
+  describe('.search') do
+    it('searches for a word by name') do
+      word = Word.new("word", nil)
+      word.save
+      expect(Word.search("word")).to(eq([word]))
+    end 
+  end
+
 
 end

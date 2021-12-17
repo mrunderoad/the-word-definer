@@ -41,4 +41,8 @@ class Word
     @@words.delete(self.id)
   end
 
+  def self.search(word_searched)
+    
+  end
+
 end
