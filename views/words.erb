@@ -1,5 +1,6 @@
 <h1>The Word Wagon</h1>
-
+<br>
+<p>Enter a word of your choice to put on the list, then click on the word to add a definition!</P>
 <h3>Words:</h3>
 <% if @words.any? %>
   <ul> <% @words.each do |word| %>      
@@ -17,6 +18,16 @@
   <br>  
   <button type="submit" class="btn btn-warning">Sort Words Alphabetically</button>
   <br>
+</form>
+<form action="/words/list">
+<br>
+<button type="submit" class="btn btn-info">See list of all words and definitions</button>
+<br>
+</form>
+<form action="/words/<%= @words.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete All Words</button>
 </form>
 
 <form action="/words">

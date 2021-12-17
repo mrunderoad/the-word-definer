@@ -1,8 +1,6 @@
-<h4>Word: <%= @word.name %></h4>
+<h2>Definition for the word: <%= @word.name %></h2>
 
-
-<h3>Word Definitions:</h3>
-
+<br>
   <% if @word.definitions %>
     <ul>
       <% @word.definitions.each do |definition| %>
