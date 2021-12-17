@@ -43,4 +43,18 @@ class Definition
     @@definitions[self.id] = Definition.new(self.name, self.word_id, self.id)
   end
 
+  def self.find_by_word(wrd_id)
+    definitions = []
+    @@definitions.values.each do |definition|
+      if definition.word_id == wrd_id
+        definitions.push(definition)
+      end
+    end
+    definitions
+  end
+
+  def word
+    Word.find(self.word_id)
+  end
+  
 end

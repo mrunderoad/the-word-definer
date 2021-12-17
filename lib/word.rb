@@ -59,4 +59,8 @@ class Word
     end
   end
 
+  def definitions
+    Definition.find_by_word(self.id)
+  end
+
 end
