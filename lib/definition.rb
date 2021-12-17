@@ -36,7 +36,11 @@ class Definition
   end
 
   def update(name, word_id, id)
-
+    if name.length > 0 
+      self.name = name
+    end
+    self.word_id = word_id
+    @@definitions[self.id] = Definition.new(self.name, self.word_id, self.id)
   end
 
 end
