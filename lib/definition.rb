@@ -31,4 +31,8 @@ class Definition
     @@definitions[id]
   end
 
+  def delete
+    
+  end
+
 end
