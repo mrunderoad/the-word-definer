@@ -56,15 +56,15 @@ describe('Capitalizes word', {:type => :feature}) do
 end
 
 # describe('deletes a definition', {:type => :feature}) do
-#   it('creates a word and definition and then deletes the definition') do
-#     word = Word.new('cool', nil)
+#   it('creates definition and then deletes the definition') do
+#     word = Word.new("this", nil)
 #     word.save
-#     definition = Definition.new('definition', nil, nil)
+#     definition = Definition.new("this is it", nil, nil)
 #     definition.save
-#     visit("/words/#{word.id}/definitions/#{definition.id}")
+#     visit("/words/:id/definitions/:id")
 #     click_on('Delete Definition')
-#     expect(page).to have_content("")
-#   end 
+#     expect(page).to have_content('')
+#   end
 # end
 
 describe('creates and updates word', {:type => :feature}) do
@@ -78,6 +78,20 @@ describe('creates and updates word', {:type => :feature}) do
     click_on('Update')
     visit("/words")
     expect(page).to have_content('Ham')
+  end
+end
+
+describe('creates and updates a definition', {:type => :feature}) do
+  it('creates a word and definition and updates the definition name') do
+    word = Word.new('Cool', 1)
+    word.save
+    definition = Definition.new('fact', @word.id, @definition.id)
+    definition.save
+    visit("/words/#{definition.word.id}/definitions/#{@definition.id}")
+    fill_in('name', :with => 'fiction')
+    click_on('Update definition!')
+    visit("/words/#{word.id}/definitions")
+    expect(page).to have_content('fiction')
   end
 end
 
