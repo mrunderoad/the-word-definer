@@ -42,7 +42,13 @@ class Word
   end
 
   def self.search(word_searched)
-    
+    search_array = []
+    @@words.values.each do |word|
+      if word.name == word_searched
+        search_array.push(word)
+      end
+    end
+    search_array
   end
 
 end

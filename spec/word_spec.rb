@@ -73,9 +73,9 @@ require 'word'
 
   describe('.search') do
     it('searches for a word by name') do
-      word = Word.new("word", nil)
+      word = Word.new("this", nil)
       word.save
-      expect(Word.search("word")).to(eq([word]))
+      expect(Word.search("this")).to(eq([word]))
     end 
   end
 
