@@ -12,7 +12,7 @@
 <% end %>
 <br>
 
-<a href="/words/new"><button class="btn btn-success">Add a new word!</button></a>
+<a href="/words/new">Add a new word!</a>
 <br>
 <form action="/words/sort" method="post">
   <br>  
@@ -23,11 +23,6 @@
 <br>
 <button type="submit" class="btn btn-info">See list of all words and definitions</button>
 <br>
-</form>
-<form action="/words/<%= @words.id() %>" method="post">
-  <input name="_method" type="hidden" value="delete">
-
-  <button type="submit">Delete All Words</button>
 </form>
 
 <form action="/words">

@@ -73,23 +73,23 @@ require 'word'
 
   describe('.search') do
     it("searches for a word by name") do
-      word = Word.new("this", nil)
+      word = Word.new("This", nil)
       word.save
-      expect(Word.search("this")).to(eq([word]))
+      expect(Word.search("This")).to(eq([word]))
     end 
   end
 
   describe('.sort') do
     it("sorts words alphabetically") do
-      word = Word.new("bagel", nil)
+      word = Word.new("Tagel", nil)
       word.save
-      word2 = Word.new("anagram", nil)
+      word2 = Word.new("Anagram", nil)
       word2.save
       Word.sort
       expect(Word.all).to(eq([word2, word]))
     end
   end
-  
+
 
 
 end
