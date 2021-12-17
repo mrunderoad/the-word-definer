@@ -41,4 +41,15 @@ require 'word'
     end
   end
 
+  describe('.find') do
+    it("finds a word by id") do
+      word = Word.new("Far", nil)
+      word.save
+      word2 = Word.new("Near", nil)
+      word2.save
+      expect(Word.find(word.id)).to(eq(word))
+    end
+  end
+  
+
 end
