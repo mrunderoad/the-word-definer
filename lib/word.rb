@@ -54,8 +54,8 @@ class Word
   def self.sort
     array = @@words.values.sort_by! &:name
     @@words = {}
-    array.each do |word|
-      @@words[word.id] = word
+    array.each do |element|
+      @@words[element.id] = element
     end
   end
 

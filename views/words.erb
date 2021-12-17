@@ -9,29 +9,34 @@
 <% else %>
   <p>Uh oh! No words have been added yet!</p>
 <% end %>
+<br>
 
 <a href="/words/new">Add a new word!</a>
 <br>
 <form action="/words/sort" method="post">
-  <button type="submit" class="btn">Sort Alphabetically</button>
+  <br>  
+  <button type="submit" class="btn">Sort Words Alphabetically</button>
+  <br>
 </form>
 
-<form action="/albums">
+<form action="/words">
   <div class="form-group">
-    <label for="search">Search</label>
+  <br>
+    <label for="search">Search for Word</label>
     <input id="search" name="search" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Go!</button>
+  <br>
 </form>
 
-<h3>Searched Records: </h3>
-<% array = Album.search(params[:search]) %>
+<h3>Searched Words: </h3>
+<% array = Word.search(params[:search]) %>
 <% if array.any? %>
-  <ul> <% array.each do |album| %>      
-    <li><a href="/albums/<%= album.id %>"><%= album.name %> By: <%= album.artist %> </a> </li>
+  <ul> <% array.each do |word| %>      
+    <li><a href="/words/<%= word.id %>"><%= word.name %></a> </li>
   <% end %>
   </ul> 
 <% else %>
-  <p>There are currently no searched records to display.</p>
+  <p>Uh Oh! No searched words to display!</p>
 <% end %>
 <br>
