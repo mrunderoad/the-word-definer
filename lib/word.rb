@@ -24,7 +24,7 @@ class Word
   end
 
   def save
-    @@words[self.id] = Word.new(self.name, self.id)
+    @@words[self.id] = Word.new(self.name.capitalize, self.id)
   end
 
   def ==(other_word)
