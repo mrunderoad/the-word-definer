@@ -18,5 +18,8 @@ class Word
     @@words[id]
   end
 
+  def save
+    
+  end
 
 end

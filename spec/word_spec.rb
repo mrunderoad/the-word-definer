@@ -13,3 +13,11 @@ require 'word'
       expect(Word.all).to(eq([]))
     end
   end
+
+  describe('#save') do
+    it("saves a word") do
+      word = Word.new("Extra", nil)
+      word.save
+      expect(Word.all).to(eq([word]))
+    end
+  end
