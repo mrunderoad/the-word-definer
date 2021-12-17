@@ -52,7 +52,7 @@ require 'word'
   end
 
   describe('#update') do
-    it('updates a word by id') do
+    it("updates a word by id") do
       word = Word.new("Cool", '')
       word.save
       word.update("Bad", '')
@@ -61,7 +61,7 @@ require 'word'
   end
 
   describe('#delete') do
-    it('deletes a word by id') do
+    it("deletes a word by id") do
       word = Word.new("Great", nil)
       word.save
       word2 = Word.new("Awesome", nil)
@@ -72,12 +72,24 @@ require 'word'
   end 
 
   describe('.search') do
-    it('searches for a word by name') do
+    it("searches for a word by name") do
       word = Word.new("this", nil)
       word.save
       expect(Word.search("this")).to(eq([word]))
     end 
   end
+
+  describe('.sort') do
+    it("sorts words alphabetically") do
+      word = Word.new("bagel", nil)
+      word.save
+      word2 = Word.new("anagram", nil)
+      word2.save
+      Word.sort
+      expect(Word.all).to(eq([word2, word]))
+    end
+  end
+  
 
 
 end

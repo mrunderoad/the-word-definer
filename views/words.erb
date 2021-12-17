@@ -1,0 +1,37 @@
+<h1>The Word Wagon</h1>
+
+<h3>Words:</h3>
+<% if @words.any? %>
+  <ul> <% @words.each do |word| %>      
+      <li><a href="/words/<%= word.id %>"><%= word.name %></a> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Uh oh! No words have been added yet!</p>
+<% end %>
+
+<a href="/words/new">Add a new word!</a>
+<br>
+<form action="/words/sort" method="post">
+  <button type="submit" class="btn">Sort Alphabetically</button>
+</form>
+
+<form action="/albums">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Go!</button>
+</form>
+
+<h3>Searched Records: </h3>
+<% array = Album.search(params[:search]) %>
+<% if array.any? %>
+  <ul> <% array.each do |album| %>      
+    <li><a href="/albums/<%= album.id %>"><%= album.name %> By: <%= album.artist %> </a> </li>
+  <% end %>
+  </ul> 
+<% else %>
+  <p>There are currently no searched records to display.</p>
+<% end %>
+<br>

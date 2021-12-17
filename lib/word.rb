@@ -51,4 +51,12 @@ class Word
     search_array
   end
 
+  def self.sort
+    # array = @@albums.values.sort_by! &:name
+    # @@albums = {}
+    # array.each do |element|
+    #   @@albums[element.id] = element
+    #end
+  end
+
 end
