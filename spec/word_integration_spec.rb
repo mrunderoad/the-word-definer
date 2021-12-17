@@ -28,9 +28,19 @@ describe('searches for word', {:type => :feature}) do
   it('creates a word and then searches for it') do
     word = Word.new('Find', nil)
     word.save
-    visit('/words')
+    visit("/words")
     fill_in('search', :with => 'Find')
     click_on('Go!')
     expect(page).to have_content('Find')
   end 
+end
+
+describe('deletes a word', {:type => :feature}) do
+  it('creates a word and then deletes it') do
+    word = Word.new('flip', nil)
+    word.save
+    visit("/words/#{word.id}/edit")
+    click_on('Delete word')
+    expect(page).to have_content("")
+  end
 end
