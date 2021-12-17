@@ -60,4 +60,16 @@ require 'word'
     end 
   end
 
+  describe('#delete') do
+    it('deletes a word by id') do
+      word = Word.new("Great", nil)
+      word.save
+      word2 = Word.new("Awesome", nil)
+      word2.save
+      word.delete
+      expect(Word.all).to(eq([word2]))
+    end 
+  end 
+
+
 end

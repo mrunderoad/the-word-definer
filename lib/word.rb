@@ -37,4 +37,8 @@ class Word
     end
   end
 
+  def delete
+
+  end
+
 end
