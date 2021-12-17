@@ -32,7 +32,9 @@ class Word
   end
 
   def update(name, id)
-
+    if name.length > 0 
+      @name = name
+    end
   end
 
 end

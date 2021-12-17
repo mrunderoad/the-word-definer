@@ -53,7 +53,7 @@ require 'word'
 
   describe('#update') do
     it('updates a word by id') do
-      word = Word.new("Cool", nil)
+      word = Word.new("Cool", '')
       word.save
       word.update("Bad", '')
       expect(word.name).to(eq("Bad"))
