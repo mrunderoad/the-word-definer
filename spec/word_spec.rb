@@ -30,4 +30,15 @@ require 'word'
     end
   end
 
+  describe('.clear') do 
+    it("clears all albums") do
+      word = Word.new("Cool", nil)
+      word.save
+      word2 = Word.new("Rad", nil)
+      word2.save
+      Word.clear
+      expect(Word.all).to(eq([]))
+    end
+  end
+
 end
