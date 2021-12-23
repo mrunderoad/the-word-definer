@@ -1,5 +1,6 @@
 require('capybara/rspec')
 require('./app')
+require('pry')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
@@ -55,17 +56,20 @@ describe('Capitalizes word', {:type => :feature}) do
   end
 end
 
-# describe('deletes a definition', {:type => :feature}) do
-#   it('creates definition and then deletes the definition') do
-#     word = Word.new("this", nil)
-#     word.save
-#     definition = Definition.new("this is it", nil, nil)
-#     definition.save
-#     visit("/words/:id/definitions/:id")
-#     click_on('Delete Definition')
-#     expect(page).to have_content('')
-#   end
-# end
+describe('deletes a definition', {:type => :feature}) do
+  it('creates definition and then deletes the definition') do
+    visit("/words")
+    click_on('Add a new word!')
+    fill_in('word_name', :with => 'apple')
+    click_on('Add Word!')
+    click_on('Apple')
+    fill_in('definition_name', :with => 'fruit')
+    click_on('Add definition')
+    click_on('fruit')
+    click_on('Delete')
+    expect(page).to have_content('')
+  end
+end
 
 describe('creates and updates word', {:type => :feature}) do
   it('creates a new word and then updates the name') do
@@ -81,17 +85,17 @@ describe('creates and updates word', {:type => :feature}) do
   end
 end
 
-# describe('creates and updates a definition', {:type => :feature}) do
-#   it('creates a word and definition and updates the definition name') do
-#     word = Word.new('Cool', 1)
-#     word.save
-#     definition = Definition.new('fact', @word.id, @definition.id)
-#     definition.save
-#     visit("/words/#{definition.word.id}/definitions/#{@definition.id}")
-#     fill_in('name', :with => 'fiction')
-#     click_on('Update definition!')
-#     visit("/words/#{word.id}/definitions")
-#     expect(page).to have_content('fiction')
-#   end
-# end
+describe('creates and updates a definition', {:type => :feature}) do
+  it('creates a word and definition and updates the definition name') do
+    word = Word.new('Cool', 1)
+    word.save
+    definition = Definition.new('fact', word.id, nil)
+    definition.save
+    visit("/words/#{word.id}/definitions/#{definition.id}")
+    fill_in('name', :with => 'fiction')
+    click_on('Update definition!')
+    visit("/words/#{word.id}/definitions/#{definition.id}")
+    expect(page).to have_content('fiction')
+  end
+end
 

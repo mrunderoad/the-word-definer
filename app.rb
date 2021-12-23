@@ -60,6 +60,7 @@ end
 
 get('/words/:id/definitions/:definition_id') do
   @definition = Definition.find(params[:definition_id].to_i())
+  # binding.pry
   erb(:definition)
 end
 
